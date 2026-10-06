@@ -1,0 +1,28 @@
+<?php
+/**
+ * Default index template.
+ *
+ * @package Estatein
+ */
+
+get_header();
+?>
+<main class="site-main inner-page">
+	<div class="container content-wrap">
+		<?php if ( have_posts() ) : ?>
+			<?php
+			while ( have_posts() ) :
+				the_post();
+				?>
+				<article <?php post_class( 'panel article' ); ?>>
+					<h1><?php the_title(); ?></h1>
+					<div class="entry"><?php the_content(); ?></div>
+				</article>
+			<?php endwhile; ?>
+		<?php else : ?>
+			<p><?php esc_html_e( 'Nothing found.', 'estatein' ); ?></p>
+		<?php endif; ?>
+	</div>
+</main>
+<?php
+get_footer();
